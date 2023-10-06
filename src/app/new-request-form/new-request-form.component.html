@@ -1,0 +1,38 @@
+<div class="flex flex-col w-50 p-6 rounded-lg">
+  <div class="title p-4">
+    <h2>Ajouter une demande d'autorisation</h2>
+  </div>
+  <form
+    [formGroup]="myForm!"
+    (ngSubmit)="submitForm()"
+    novalidate
+    class="flex flex-col mt-6"
+  >
+    <!-- Name -->
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="Projet de travaux *"
+        formControlName="project"
+      />
+    </mat-form-field>
+    <!-- Email -->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Utilisateur *" formControlName="user" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Contrat" formControlName="contract" />
+    </mat-form-field>
+    <div class="flex justify-between mt-8">
+      <button mat-stroked-button color="primary" type="button">Anuller</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!myForm!.valid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
