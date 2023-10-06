@@ -4,7 +4,6 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { RequestsService } from 'src/services/requests.service';
 
 export interface RequestDataInterface {
-  id: number;
   project: string;
   user: string;
   contract: string;
@@ -46,7 +45,7 @@ export class NewRequestFormComponent {
 
   submitForm() {
     if (this.data) {
-      this.saveRequestService.editRequest(this.myForm?.value, this.data.id);
+      this.saveRequestService.editRequest(this.myForm?.value);
       this.dialog.closeAll();
     } else {
       this.saveRequestService.saveRequestForm(this.myForm?.value);

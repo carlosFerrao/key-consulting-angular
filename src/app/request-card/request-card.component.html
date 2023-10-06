@@ -1,6 +1,6 @@
 <div
   class="flex rounded-xl px-4 py-4 flex-col bg-white mt-4"
-  *ngFor="let req of requests"
+  *ngFor="let req of requests; let i = index"
 >
   <div>
     <div class="flex">
@@ -25,11 +25,11 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="deleteRequest(req.id)">
+          <button mat-menu-item (click)="deleteRequest(i)">
             <mat-icon>delete</mat-icon>
             <span>Delete Request</span>
           </button>
-          <button mat-menu-item (click)="editRequest(req.id)">
+          <button mat-menu-item (click)="editRequest(i)">
             <mat-icon>edit</mat-icon>
             <span>Edit Request</span>
           </button>

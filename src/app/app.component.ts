@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private request: RequestsService) {}
 
   ngOnInit(): void {
-    this.request.getAllRequests();
+    // this.request.getAllRequests();
   }
 }

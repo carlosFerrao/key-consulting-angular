@@ -1,44 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 import { RequestDataInterface } from 'src/app/new-request-form/new-request-form.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RequestsService {
-  private setRequestSubject$ = new BehaviorSubject<RequestDataInterface[]>([]);
+  private setRequestSubject$ = new BehaviorSubject<RequestDataInterface[]>([
+    { user: 'EDF', contract: '123456', project: ' Key Consulting' },
+  ]);
   allRequests$ = this.setRequestSubject$.asObservable();
-  url = 'http://localhost:3000/requests';
 
   constructor(private http: HttpClient) {}
 
   saveRequestForm(form: RequestDataInterface) {
-    this.http.post<RequestDataInterface[]>(this.url, form).subscribe((res) => {
-      this.getAllRequests();
+    this.allRequests$.pipe(take(1)).subscribe((val) => {
+      const newArr = [...val, form];
+      this.setRequestSubject$.next(newArr);
     });
   }
 
-  editRequest(form: RequestDataInterface, id: number) {
-    this.http
-      .put<RequestDataInterface[]>(`${this.url}/${id}`, form)
-      .subscribe((res) => {
-        this.getAllRequests();
+  editRequest(formToEdit: RequestDataInterface) {
+    this.allRequests$.pipe(take(1)).subscribe((val) => {
+      const index = val.findIndex((form) => {
+        return form.contract == formToEdit.contract;
       });
+      let editArr = val;
+      editArr[index] = formToEdit;
+      this.setRequestSubject$.next(editArr);
+    });
   }
 
-  deleteRequest(id: number) {
-    this.http
-      .delete<RequestDataInterface[]>(`${this.url}/${id}`)
-      .subscribe((res) => {
-        this.getAllRequests();
-      });
-  }
-
-  getAllRequests() {
-    this.http.get<RequestDataInterface[]>(this.url).subscribe((res) => {
-      this.setRequestSubject$.next(res);
+  deleteRequest(indexDelete: number) {
+    this.allRequests$.pipe(take(1)).subscribe((val) => {
+      const newArr = val.filter((res, index) => index !== indexDelete);
+      this.setRequestSubject$.next(newArr);
     });
   }
 }

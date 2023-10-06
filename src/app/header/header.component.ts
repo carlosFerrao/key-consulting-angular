@@ -11,10 +11,6 @@ export class HeaderComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
-    this.dialog.open(NewRequestFormComponent, {
-      data: {
-        animal: 'panda',
-      },
-    });
+    this.dialog.open(NewRequestFormComponent);
   }
 }
