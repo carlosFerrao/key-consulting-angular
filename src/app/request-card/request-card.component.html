@@ -4,16 +4,20 @@
 >
   <div>
     <div class="flex">
-      <div class="flex items-center justify-center mr-2 rounded-2xl blue-icon">
+      <div
+        class="flex items-center justify-center mr-2 rounded-2xl blue-icon bg-bgBlueIcon"
+      >
         <img src="assets/document-icon.svg" />
       </div>
       <div class="grow flex flex-col">
-        <span class="text-sm text-[#4B5565]"
+        <span class="text-sm text-subtitle"
           >Demande d'autorisation de travaux</span
         >
         <span class="font-bold text-base"> {{ req.project }}</span>
       </div>
-      <div class="flex items-center justify-center status text-[#DC6803] mr-4">
+      <div
+        class="flex items-center justify-center status text-status bg-bgStatus mr-4"
+      >
         Statut
       </div>
       <div class="dots">
@@ -37,11 +41,11 @@
       </div>
     </div>
     <div class="flex ml-14 mt-2 mb-2">
-      <div class="name bg-[#364152] text-[#FCFCFD] px-4 py-0.5 rounded-md">
+      <div class="name bg-bgUser text-user px-4 py-0.5 rounded-md">
         <label> {{ req.user }}</label>
       </div>
       <div
-        class="contrat bg-[#EEF2F6] text-[#363F72] px-4 py-0.5 rounded-md ml-4"
+        class="contrat bg-bgContract text-contract px-4 py-0.5 rounded-md ml-4"
       >
         <label>Contrat {{ req.contract }} </label>
       </div>

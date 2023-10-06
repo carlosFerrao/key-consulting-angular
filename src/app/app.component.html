@@ -1,7 +1,7 @@
-<div class="container mx-auto h-full flex flex-col">
+<div class="container mx-auto h-full flex flex-col overflow-auto">
   <div class="container-md mx-auto w-full mt-8">
     <app-header></app-header>
-    <div *ngIf="requests$ | async as req">
+    <div *ngIf="requests$ | async as req" class="py-4">
       <app-request-card [requests]="req"></app-request-card>
     </div>
   </div>

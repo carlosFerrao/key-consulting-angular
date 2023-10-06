@@ -8,7 +8,6 @@
     novalidate
     class="flex flex-col mt-6"
   >
-    <!-- Name -->
     <mat-form-field class="example-full-width">
       <input
         matInput
@@ -16,7 +15,7 @@
         formControlName="project"
       />
     </mat-form-field>
-    <!-- Email -->
+
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Utilisateur *" formControlName="user" />
     </mat-form-field>
@@ -24,14 +23,21 @@
       <input matInput placeholder="Contrat" formControlName="contract" />
     </mat-form-field>
     <div class="flex justify-between mt-8">
-      <button mat-stroked-button color="primary" type="button">Anuller</button>
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="closeDialog()"
+      >
+        Annuler
+      </button>
       <button
         mat-raised-button
         color="primary"
         type="submit"
         [disabled]="!myForm!.valid"
       >
-        Submit
+        Créer
       </button>
     </div>
   </form>

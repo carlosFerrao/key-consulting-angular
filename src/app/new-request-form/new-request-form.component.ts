@@ -52,4 +52,8 @@ export class NewRequestFormComponent {
       this.dialog.closeAll();
     }
   }
+
+  closeDialog() {
+    this.dialog.closeAll();
+  }
 }

@@ -12,12 +12,23 @@ module.exports = {
   },
   theme: {
     extend: {},
+    colors: {
+      white: "#FFFFFF",
+      subtitle: "#4B5565",
+      status: "#DC6803",
+      bgStatus: "#fef0c7",
+      bgUser: "#364152",
+      user: "#FCFCFD",
+      bgContract: "#EEF2F6",
+      contract: "#363F72",
+      bgBlueIcon: "#e0f2fe",
+    },
     container: {
       screens: {
-        sm: "640px", // => @media (min-width: 640px) { ... }
-        md: "1024px", // => @media (min-width: 768px) { ... }
-        lg: "1280px", // => @media (min-width: 1024px) { ... }
-        xl: "1500px", // => @media (min-width: 1280px) { ... }
+        sm: "640px",
+        md: "1024px",
+        lg: "1280px",
+        xl: "1500px",
       },
     },
   },
