@@ -3,7 +3,7 @@
     <h2>Ajouter une demande d'autorisation</h2>
   </div>
   <form
-    [formGroup]="myForm!"
+    [formGroup]="requestForm!"
     (ngSubmit)="submitForm()"
     novalidate
     class="flex flex-col mt-6"
@@ -35,7 +35,7 @@
         mat-raised-button
         color="primary"
         type="submit"
-        [disabled]="!myForm!.valid"
+        [disabled]="!requestForm!.valid"
       >
         Créer
       </button>

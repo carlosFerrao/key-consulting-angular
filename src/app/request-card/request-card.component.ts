@@ -33,7 +33,6 @@ export class RequestCardComponent implements OnInit {
 
   editRequest(id: number) {
     const selectedRequest = this.requests.filter((res, index) => index == id);
-    console.log(selectedRequest, 'selected');
     this.dialog.open(NewRequestFormComponent, {
       data: selectedRequest[0],
     });

@@ -15,7 +15,7 @@ export interface RequestDataInterface {
   styleUrls: ['./new-request-form.component.scss'],
 })
 export class NewRequestFormComponent {
-  myForm: FormGroup | undefined;
+  requestForm: FormGroup | undefined;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: RequestDataInterface,
@@ -28,14 +28,14 @@ export class NewRequestFormComponent {
   }
 
   initForm() {
-    this.myForm = this.fb.group({
+    this.requestForm = this.fb.group({
       project: ['', [Validators.required]],
       user: ['', [Validators.required]],
       contract: ['', [Validators.required]],
     });
 
     if (this.data) {
-      this.myForm.patchValue({
+      this.requestForm.patchValue({
         project: this.data.project,
         user: this.data.user,
         contract: this.data.contract,
@@ -45,10 +45,10 @@ export class NewRequestFormComponent {
 
   submitForm() {
     if (this.data) {
-      this.saveRequestService.editRequest(this.myForm?.value);
+      this.saveRequestService.editRequest(this.requestForm?.value);
       this.dialog.closeAll();
     } else {
-      this.saveRequestService.saveRequestForm(this.myForm?.value);
+      this.saveRequestService.saveRequestForm(this.requestForm?.value);
       this.dialog.closeAll();
     }
   }
